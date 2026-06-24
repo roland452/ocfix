@@ -6,9 +6,9 @@ dotenv.config()
 
 // 1. Configure Cloudinary with your credentials 
 cloudinary.config({
-  cloud_name:'dtfekx2ic',
-  api_key:'884738257577951',
-  api_secret:'8mVjdTWuLaEJ94sK0R5Io3i0sso'
+  cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:process.env.CLOUDINARY_API_KEY,
+  api_secret:process.env.CLOUDINARY_API_SECRET
 });
 
 // 2. Setup Cloudinary Storage instead of diskStorage
