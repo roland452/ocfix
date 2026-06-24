@@ -138,9 +138,9 @@ route.post('/api/login', async(req, res) => {
         // 5. Set Cookie and Response
         res.cookie('userToken', userToken, {
             httpOnly: true,
-            secure: false, // Set to true if using HTTPS
-            sameSite: 'lax',
-            path: '/'
+            secure: true,
+            sameSite:'none',
+            maxAge:7 * 24 * 60 * 60 * 1000
         })
 
         res.status(200).json({ message:'login successful', user })
@@ -264,9 +264,9 @@ route.get('/api/profile', userAuth, async(req, res) => {
         
         res.cookie('userToken',userToken,{
             httpOnly: true,
-            secure: false,
-            sameSite:'lax',
-            path:'/'
+            secure: true,
+            sameSite:'none',
+            maxAge:7 * 24 * 60 * 60 * 1000
         })
 
         res.json({ data: !user? req.user : user })

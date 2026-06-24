@@ -24,7 +24,7 @@ app.use(cors({
     origin:['http://localhost:5173',`${process.env.CLIENT_URL}`],
     credentials: true,
     methods: ['GET','PUT','POST','PATCH','DELETE','OPTIONS'],
-    allowedHeaders:['Content-Type','Authorization','cookie']
+    allowedHeaders:['Content-Type','Authorization','Cookie']
 }))
 app.use(cookieParser())
 app.use(express.json())
