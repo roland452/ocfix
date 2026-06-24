@@ -2,6 +2,8 @@ import { Server } from 'socket.io';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
 import Chat from '../model/client/pages/chat/chat.js';
+import dotenv from 'dotenv'
+dotenv.config()
 
 // userId -> Set of socketIds (a user can have multiple tabs/devices open)
 const onlineUsers = new Map();
@@ -25,7 +27,12 @@ function isUserOnline(userId) {
 let io;
 
 export function initSocket(server, corsOptions) {
-  io = new Server(server, { cors: corsOptions });
+  io = new Server(server, { 
+    cors: {
+      origin:`${process.env.CLIENT_URL}`,
+      credentials: true
+    } 
+  });
 
   // AUTH MIDDLEWARE — same JWT + cookie verification as userAuth.js
   io.use((socket, next) => {
