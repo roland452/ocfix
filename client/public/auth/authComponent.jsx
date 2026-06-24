@@ -23,23 +23,24 @@ const AuthComponent = () => {
     // h-screen and overflow-hidden prevent the page from scrolling
     <div className='h-screen w-full bg-[#f8f9fa] dark:bg-[var(--d-bg)] flex items-center justify-center p-4 overflow-hidden'>
       
-      {/* Home Navigation - Subtle in light mode, glowing in dark */}
-      <Link 
-        to={'/dashboard'} 
-        className="fixed top-6 right-6 p-3 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-sm text-lg hover:scale-110 transition-all z-50 text-gray-600 dark:text-white"
-      > 
-        <FaHome /> 
-      </Link>
-
+      
       {/* Main Auth Card */}
       <div className='relative w-full max-w-[420px] bg-white dark:bg-[#0a0a0a] shadow-2xl shadow-gray-200 dark:shadow-black rounded-[2.5rem] p-8 overflow-hidden border border-gray-100 dark:border-white/5 flex flex-col justify-between'>
-        
+
+        {/* Home Navigation - Subtle in light mode, glowing in dark */}
+        <Link 
+          to={'/dashboard'} 
+          className="absolute top-10 right-6 p-3 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-sm text-lg hover:scale-110 transition-all z-50 text-gray-600 dark:text-white"
+        > 
+          <FaHome /> 
+        </Link>
+
         {/* Face ID Quick Toggle */}
         { 
           loginActiveSection !== 'email' && authSection === 'login' && (
             <div 
               onClick={() => setLoginActiveSection('email')}
-              className="absolute top-6 left-6 p-2.5 rounded-xl bg-[var(--active-color)]/10 text-[var(--active-color)] cursor-pointer hover:bg-[var(--active-color)]/20 transition-colors"
+              className="absolute top-10  p-3 rounded-2xl bg-[var(--active-color)]/10 text-[var(--active-color)] cursor-pointer hover:bg-[var(--active-color)]/20 transition-colors"
               title="Login with Face ID"
             >
               <TbFaceId className="text-xl" />
@@ -49,7 +50,6 @@ const AuthComponent = () => {
 
         {/* Brand Header - Reduced margins to prevent scroll */}
         <div className='flex flex-col items-center gap-1 mb-6 mt-2'>
-            <div className="text-4xl"><FcOpenedFolder /></div>
             <h1 className='text-2xl font-black tracking-tighter text-gray-900 dark:text-white uppercase'>
               Octfix
             </h1>

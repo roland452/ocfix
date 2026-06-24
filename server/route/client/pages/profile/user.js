@@ -228,18 +228,8 @@ route.get('/api/auth-check', userAuth, async(req, res) => {
     const user = req.user
     res.json({ 
         authenticated: true, 
-        data: {
-            userId: user._id,
-            email: user.email,
-            name: user.name,
-            birthdate: user.birthdate,
-            about: user.about,
-            link: user.link,
-            phone: user.phone,
-            image: user.image,
-        } 
+        data: user
     }) 
-
 })
 
 

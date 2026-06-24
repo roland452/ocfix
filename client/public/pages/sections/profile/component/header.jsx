@@ -81,7 +81,7 @@ const Header = () => {
               {userProfile?.image ? (
                 <img 
                   className='w-[320px] h-[320px] md:w-[450px] md:h-[450px] object-cover rounded-2xl shadow-2xl border-4 border-white dark:border-zinc-800' 
-                  src={'http://localhost:5000' + userProfile.image} 
+                  src={userProfile.image} 
                   alt="Profile Large" 
                 />
               ) : (

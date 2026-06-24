@@ -102,7 +102,7 @@ const Notices = () => {
     const hours = Math.floor(minutes / 60);
     if (hours < 24) return `${hours}h ago`;
     const days = Math.floor(hours / 24);
-    if (days === 1) return 'Yesterday';
+    if (days === 1) return 'Yday';
     return `${days}d ago`;
   };
 

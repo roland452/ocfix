@@ -23,6 +23,7 @@ const Client = ({req, fetchOffers}) => {
   const [isProjectModal, setIsProjectModal] = useState(false)
   const [sentBy, setSentBy] = useState('')
   const [jobId, setJobId] = useState('')
+  const [isPosting, setIsposting] = useState(false)
 
 
   const setProjectView = (portfolioLink, projectScreenshoot, sentBy, jobId) => {
@@ -38,15 +39,31 @@ const Client = ({req, fetchOffers}) => {
 
 
   async function sendApproval(clientId, jobOfferId) {
+    setIsposting(true)
     try {
       const res = await axios.post(`/api/post-approval`,{
         clientId, jobOfferId
       },{ withCredentials: true })
-
+      setIsposting(false)
       fetchOffers()
 
     } catch (error) {
-      (error); 
+      setIsposting(false)
+    }
+  }
+
+  async function declineApproval(clientId, jobOfferId) {
+    setIsposting(true)
+    try {
+      const res = await axios.post(`/api/post-decline-approval`,{
+        clientId, jobOfferId
+      },{ withCredentials: true })
+
+      fetchOffers()
+      setIsposting(false)
+
+    } catch (error) {
+      setIsposting(false)
     }
   }
   const [clientId, setClientId] = useState('')
@@ -100,6 +117,8 @@ const Client = ({req, fetchOffers}) => {
           isProjectModal={isProjectModal} 
           setIsProjectModal={setIsProjectModal} 
           sendApproval={sendApproval} 
+          declineApproval={declineApproval}
+          isPosting={isPosting}
           sentBy={sentBy} 
           jobId={jobId} 
         />

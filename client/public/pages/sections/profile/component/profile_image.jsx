@@ -18,6 +18,7 @@ const ProfileImage = ({ setViewProfile, viewProfile, openFile, fileInputRef, set
   const userName = userProfile?.name || '';
   const userEmail = userProfile?.email || '';
 
+  
   return (
     <div className='flex items-center gap-4 group'>
       {/* Avatar Container */}
@@ -34,17 +35,16 @@ const ProfileImage = ({ setViewProfile, viewProfile, openFile, fileInputRef, set
         >
           {/* Internal Content (Image or Icon) */}
           <div className="overflow-hidden rounded-xl w-full h-full flex items-center justify-center">
-            {loading ? (
-              <AiOutlineLoading3Quarters className='animate-spin text-xl text-[var(--active-color)]'/>
-            ) : error ? (
-              <FaSync className="cursor-pointer" onClick={() => setRefresh(!refresh)} />
-            ) : userProfile?.image ? (
+            {loading && (<AiOutlineLoading3Quarters className='animate-spin text-xl text-[var(--active-color)]'/>)}
+            {error && (<FaSync className="cursor-pointer" onClick={() => setRefresh(!refresh)} />)}
+            { userProfile?.image && (
               <img 
                 className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' 
                 src={userProfile.image} 
                 alt={userEmail[0]?.toUpperCase()} 
               />
-            ) : (
+             )}
+            {!userProfile?.image && (
               <div className='text-2xl font-bold text-[var(--active-color)] uppercase'>
                 {userName ? userName[0] : <FaUserAlt />}
               </div>
@@ -82,7 +82,7 @@ const ProfileImage = ({ setViewProfile, viewProfile, openFile, fileInputRef, set
 
       {/* User Info */}
       <div className='flex flex-col'>
-        <div className='font-bold text-slate-900 dark:text-white text-lg tracking-tight truncate max-w-[150px]'>
+        <div className='font-bold text-slate-900 dark:text-white text-lg tracking-tight truncate max-w-[150px] capitalize'>
           {userName || 'Guest User'}
         </div>
         <div className='text-xs text-slate-500 dark:text-slate-400 font-medium truncate max-w-[150px]'>

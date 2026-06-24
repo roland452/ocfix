@@ -108,7 +108,7 @@ const LoginContent = ({ email, setEmail, password, setPassword, handleSubmit, su
 
       {/* Sign In Button */}
       <button
-        className="w-full py-4 bg-[var(--active-color)] rounded-2xl font-bold text-white shadow-lg shadow-[var(--active-color)]/20 hover:scale-[1.02] active:scale-95 transition-all flex justify-center items-center gap-2"
+        className="w-full py-4 bg-red-400 rounded-2xl font-bold text-white shadow-lg shadow-[var(--active-color)]/20 hover:scale-[1.02] active:scale-95 transition-all flex justify-center items-center gap-2"
         onClick={() => handleSubmit()}
         disabled={submitting}
       >
@@ -132,7 +132,7 @@ const LoginContent = ({ email, setEmail, password, setPassword, handleSubmit, su
           ? <FaSpinner className="text-3xl animate-spin text-[var(--active-color)]" />
           : <HiOutlineFingerPrint className="text-3xl text-gray-400 group-hover:text-[var(--active-color)] transition-colors" />
         }
-        <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-70 transition-opacity">
+        <span className="text-[10px] text-black dark:text-white font-bold uppercase tracking-widest opacity-40 group-hover:opacity-70 transition-opacity">
           {bioLoading ? 'Scanning...' : 'Fingerprint / Face ID'}
         </span>
       </button>

@@ -155,4 +155,27 @@ route.post('/api/post-approval', userAuth, async (req, res) => {
 })
 
 
+// route for declined approval for appointment client 
+route.post('/api/post-decline-approval', userAuth, async (req, res) => {
+  const { clientId, jobOfferId } = req.body;
+  const approvedBy = req.user.userId;
+  try {
+
+    const updatedOffer = await Offers.findOneAndDelete({ 
+      jobOfferId: jobOfferId, 
+      postedBy: approvedBy,
+      sentBy: clientId
+    }); 
+
+    await updatedOffer.save()
+    res.status(201).json({message: 'offer has been declined and deleted'})
+
+  } catch (error) {
+    res.status(201).json({message: 'server error occured'});
+    console.log(error);
+    
+  }
+})
+
+
 export default route

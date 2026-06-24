@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaTimes, FaRegImages, FaSearchPlus } from 'react-icons/fa';
 
-const ProjectsModal = ({ link, projects, isProjectModal, setIsProjectModal, sentBy, jobId, sendApproval }) => {
+const ProjectsModal = ({ link, projects, isProjectModal, setIsProjectModal, sentBy, jobId, sendApproval, declineApproval, isPosting }) => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   if (!isProjectModal) return null;
@@ -86,13 +86,15 @@ const ProjectsModal = ({ link, projects, isProjectModal, setIsProjectModal, sent
 
           <div className="p-6 grid grid-cols-2 gap-2 bg-white/[0.02] border-t border-slate-200 dark:border-white/10">
             <button 
+              disabled={isPosting}
               onClick={() => sendApproval(sentBy, jobId,)}
               className="w-full py-4 bg-[var(--active-color)]/10 text-[var(--active-color)] font-bold rounded-3xl hover:bg-[var(--active-color)]/30 transition-all active:scale-95"
             >
               Approve
             </button> 
             <button 
-              onClick={() => setIsProjectModal(false)}
+              disabled={isPosting}
+              onClick={() => declineApproval(sentBy, jobId,)}
               className="w-full py-4 bg-red-100 text-[red] font-bold rounded-3xl hover:bg-red-200 transition-all active:scale-95"
             >
               Decline

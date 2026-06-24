@@ -9,12 +9,12 @@ import useNavActive from "../../context/navContext";
 
 const NavButton = () => {
   const navBtn = [
-    { icon: <MdOutlineMultilineChart />, section: 'dashboard' },
-    { icon: <MdManageSearch />, section: 'jobs' },
-    { icon: <IoMdBookmark />, section: 'saved jobs' },
-    { icon: <HiFlag />, section: 'appointments' },
-    { icon: <FaUserCog />, section: 'profile' },
-    { icon: <BsChatDotsFill />, section: 'chat' },
+    { icon: <MdOutlineMultilineChart />, section: 'dashboard', label: 'analytic board', },
+    { icon: <MdManageSearch />, section: 'jobs', label: 'jobs', },
+    { icon: <IoMdBookmark />, section: 'saved jobs', label: 'saved jobs', },
+    { icon: <HiFlag />, section: 'appointments', label: 'appointments', },
+    { icon: <FaUserCog />, section: 'profile', label: 'profile', },
+    { icon: <BsChatDotsFill />, section: 'chat', label: 'chat', },
   ];
 
   const activeSection = useSection((state) => state.activeSection);
@@ -47,7 +47,7 @@ const NavButton = () => {
               </span>
               
               <span className={`capitalize text-sm font-medium tracking-wide`}>
-                {item.section}
+                {item.label}
               </span>
 
               {/* Subtle Glow for Active Item */}
