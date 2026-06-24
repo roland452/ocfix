@@ -53,6 +53,17 @@ const UserSchema = mongoose.Schema({
             }
         }
     ],
+    webauthnCredentials: [{
+        credentialId: { type: String },
+        publicKey: { type: String },
+        counter: { type: Number, default: 0 },
+        deviceType: { type: String }
+    }],
+
+    fingerprintEnabled: { 
+        type: Boolean, 
+        default: false 
+    },
     faceDescriptor: {
         type: [Number],
         default: []
@@ -65,3 +76,4 @@ const UserSchema = mongoose.Schema({
 
 
 export default model('User', UserSchema)
+

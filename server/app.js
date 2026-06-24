@@ -38,6 +38,12 @@ app.use('/uploads',express.static(path.join(__dirname,'uploads'),{
 import adminRoute from './route/admin/admin.js'
 
 
+
+// webAuth import
+import webAuthRoute from './route/webAuth/webAuthRoute.js'
+import fingerprintWebAuthRoute from './route/webAuth/fingerprintWebAuth.js'
+
+
 // dashboard route import
 import useDashboard from './route/client/pages/dashboard/dashboard.js'
 
@@ -65,6 +71,11 @@ import useTransaction from './route/client/pages/job/finances/transaction.js'
 import useReview from './route/client/pages/profile/review.js'
 
 
+
+
+// webAuth usage 
+app.use(webAuthRoute)
+app.use(fingerprintWebAuthRoute)
 
 
 // dashboard
