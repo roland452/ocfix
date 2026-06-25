@@ -17,8 +17,7 @@ const Menu = () => {
     <div 
       className={`
         bg-[var(--d-bg)] md:dark:bg-main/20
-        grid grid-rows-[10%_70%_1fr] gap-[0rem] fixed top-0 sm:top-1 bottom-0 sm:bottom-5 md:left-1 w-[300px] rounded-2xl
-        rounded-b-0 rounded-tr-2xl rounded-br-2xl
+        grid grid-rows-[10%_70%_1fr] gap-[0rem] fixed top-0 sm:top-1 bottom-0 sm:bottom-5 md:left-1 w-[300px] sm:rounded-2xl
         border-2 border-white/10 
         ${isActiveNav? 'left-0' : 'left-[-300px]'} md:relative z-100
         transition-[.5s] ease-in-out duration-[.5s]
