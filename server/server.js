@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000
 
 const server = http.createServer(app)
 
-// Same CORS rules used for the REST API, so cookies are sent on the socket handshake too
+// Same CORS rules used for the REST API, so cookies are sent on the socket handshake too......
 const corsOptions = {
     origin: function(origin, callback) {
         callback(null, true)
