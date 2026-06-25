@@ -27,12 +27,10 @@ function isUserOnline(userId) {
 let io;
 
 export function initSocket(server, corsOptions) {
-  io = new Server(server, { 
-    cors: {
-      origin:['http://localhost:5173',`${process.env.CLIENT_URL}`],
-      credentials: true
-    } 
-  });
+  const io = new Server(server, { 
+    cors: corsOptions,
+    transports:['polling', 'websocket']
+  })
 
   // AUTH MIDDLEWARE — same JWT + cookie verification as userAuth.js
   io.use((socket, next) => {

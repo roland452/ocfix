@@ -9,8 +9,11 @@ const server = http.createServer(app)
 
 // Same CORS rules used for the REST API, so cookies are sent on the socket handshake too
 const corsOptions = {
-    origin: ['http://localhost:5173',`${process.env.CLIENT_URL}`],
-    credentials: true
+    origin: function(origin, callback) {
+        callback(null, true)
+    },
+    credentials: true,
+    methods: ['GET','POST'],
 }
 
 initSocket(server, corsOptions)
