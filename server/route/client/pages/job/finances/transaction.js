@@ -161,7 +161,8 @@ route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10),
 
         res.status(200).json({ success: true, message: "Stage work submitted" });
     } catch (error) {
-        res.status(500).json({ success: false, message: "Submission failed" });
+        res.status(500).json({ success: false, message: "Submission failed", error });
+        console.log(error)
     }
 });
 
