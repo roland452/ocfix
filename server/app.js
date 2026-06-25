@@ -21,23 +21,15 @@ mongoose.connect(MONGO_URI).then(() => {
 
 
 app.use(cors({
-    origin:['http://localhost:5173',`${process.env.CLIENT_URL}`],
+    origin: function(origin, callback) {
+        callback(null, true)
+    },
     credentials: true,
     methods: ['GET','PUT','POST','PATCH','DELETE','OPTIONS'],
     allowedHeaders:['Content-Type','Authorization','Cookie']
 }))
 app.use(cookieParser())
 app.use(express.json())
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization,Cookie,cookie');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200).end();
-  }
-  next();
-});
 app.use('/uploads',express.static(path.join(__dirname,'uploads'),{
     setHeaders: (res, path) => {
         res.setHeader('Content-Disposition','attachment')
