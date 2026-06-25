@@ -5,7 +5,7 @@ import Chat from '../model/client/pages/chat/chat.js';
 import dotenv from 'dotenv'
 dotenv.config()
 
-// userId -> Set of socketIds (a user can have multiple tabs/devices open)
+// userId -> Set of socketIds (a user can have multiple tabs/devices open...........)
 const onlineUsers = new Map();
 
 function addOnlineUser(userId, socketId) {
