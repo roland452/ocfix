@@ -60,7 +60,7 @@ const ClientAuthprovider = ({ children }) => {
     }
   }, [isAuthenticated])
 
-  return isAuthenticated ? children : children
+  return isAuthenticated ? children : null
 }
 
 export default ClientAuthprovider
