@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import useProfile from '../public/context/profile';
 import useRefresh from '../public/context/refresh';
 import useError from '../public/context/error';
@@ -9,7 +10,7 @@ import useAuth from '../public/context/auth';
 import useSocket from '../public/pages/sections/chat/context/socketContext';
 
 const ClientAuthprovider = ({ children }) => {
-
+const navigate = useNavigate()
   const isAuthenticated    = useAuth((state) => state.auth)
   const setIsAuthenticated = useAuth((state) => state.setAuth)
   const setProfile = useProfile((state) => state.setProfile)
@@ -25,9 +26,14 @@ const ClientAuthprovider = ({ children }) => {
     try {
       const res = await axios.get('/api/auth-check', { withCredentials: true })
       let data = res.data
+      if (!data.authenticated) {
+        navigate('/')
+      }
       if (data.data) setProfile(data || [])
       setIsAuthenticated(data.authenticated || false)
+      
     } catch (error) {
+      navigate('/')
       console.log(error)
     }
   }
