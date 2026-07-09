@@ -66,7 +66,7 @@ const PostHistory = () => {
     },[refresh])
 
   return (
-    <div className="w-full h-full bg-zinc-100 dark:bg-[#0b141a] p-6 overflow-hidden flex flex-col">
+    <div className="w-full h-full p-1 md:p-6 overflow-hidden flex flex-col">
       
       
       <EditPost 

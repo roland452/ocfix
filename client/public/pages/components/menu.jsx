@@ -38,7 +38,7 @@ const Menu = () => {
       {/* <header className='flex place-content-center pt-[1rem] pl-[1rem] '>
         <h1 className='text-[30px] text-white md:text-4xl font-bold'>octfix</h1>
       </header> */}
-      <img src={OctfixLogo} alt="octfix" />
+      <img src={OctfixLogo} alt="octfix" width={150} className='flex justify-self-center' />
 
       <NavButton />
 

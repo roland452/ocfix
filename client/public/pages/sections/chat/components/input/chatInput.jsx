@@ -17,7 +17,7 @@ const ChatInput = ({
   
 
   return (
-    <div className="fixed bottom-0 left-2 right-2 md:left-4 md:right-4 z-50 pb-2">
+    <div className="fixed bottom-3 left-1 right-1 md:left-4 md:right-4 z-50 pb-2">
         <div className="max-w-2xl mx-auto flex flex-col shadow-2xl rounded-[2rem] overflow-hidden border border-zinc-200 dark:border-zinc-900 bg-[var(--l-bg)] dark:bg-[var(--d-bg)]">
           
           {/* UPDATED: Reply Preview Section */}
@@ -36,7 +36,7 @@ const ChatInput = ({
             </div>
           )}
 
-          <div className="flex gap-1 md:gap-2 items-center p-2">
+          <div className="flex gap-0 md:gap-2 items-center p-2 transition-all ease-in-out overflow-x-scroll scrollbar-hide">
             <input 
                 type="file" 
                 ref={fileInputRef} 

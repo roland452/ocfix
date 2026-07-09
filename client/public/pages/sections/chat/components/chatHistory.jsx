@@ -174,7 +174,7 @@ const ChatHistory = () => {
   };
 
   return (
-    <div className="w-full flex flex-col h-[78vh] overflow-hidden">
+    <div className="w-full flex flex-col h-[76.7vh] overflow-hidden">
       <div className="flex-1 overflow-y-auto p-4 scrollbar-hide pb-92">
         <ChatDisplay
           activeChatId={activeChatId}
