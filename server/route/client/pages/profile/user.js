@@ -307,7 +307,7 @@ route.patch('/api/user/update-avatar', userAuth, async (req, res) => {
 // user image upload
 route.patch('/api/profile-image', Upload.single('image'), userAuth, async(req, res) => {
 
-    const imageUrl = req.file ? req.file.path : '';
+    const imageUrl = req.file ? req.file.filename : '';
 
     try {
         
@@ -462,7 +462,7 @@ route.patch('/api/update-cv', userAuth, Upload.single('image'), async (req, res)
 
     try {
         
-        const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
+        const imageUrl = req.file ? req.file.filename : '';
 
         await User.findByIdAndUpdate(req.user.userId,{
             $push: { cv: imageUrl }
