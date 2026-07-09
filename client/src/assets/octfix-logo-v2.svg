@@ -1,0 +1,5 @@
+<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+  <path d="M32,176 C110,204 200,204 260,166 C320,128 340,110 368,96" fill="none" stroke="#F4B93C" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="368" cy="96" r="8" fill="#F2622E"/>
+  <text x="30" y="108" font-family="'Space Grotesk','Archivo Black',sans-serif" font-weight="800" font-size="72" letter-spacing="4"><tspan fill="#1E2A38">OCT</tspan><tspan fill="#F2622E">FIX</tspan></text>
+</svg>
