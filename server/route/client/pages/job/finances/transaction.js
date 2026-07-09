@@ -131,6 +131,7 @@ route.post('/api/fund-project', userAuth, async (req, res) => {
 
 // 2. Updated Submission Route to include the Milestone Index
 route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10), async (req, res) => {
+    console.log(contractId, notes, link, milestoneIndex)
     try {
         const { contractId, notes, link, milestoneIndex } = req.body;
         const contract = await EscrowContract.findById(contractId);
@@ -156,7 +157,7 @@ route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10),
         res.status(200).json({ success: true, message: "Stage work submitted" });
     } catch (error) {
         console.log(error,'work submit error');
-        res.status(500).json({ success: false, message: "Submission failed", error });
+        res.status(500).json({ success: false, message: `Submission failed ${error}`, error });
         
     }
 });
