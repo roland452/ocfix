@@ -168,7 +168,7 @@ route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10),
 
 
 
-// PUT: Developer updates an existing submission (notes + files)
+// PUT: Developer updates an existing submission (notes + files) 
 route.put('/api/escrow/update-submission', userAuth, Upload.array('submissions', 10), async (req, res) => {
     try {
         const { contractId, submissionId, notes } = req.body;

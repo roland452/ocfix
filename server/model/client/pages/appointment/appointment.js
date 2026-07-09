@@ -23,9 +23,7 @@ const OffersSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
-  projects: [{
-    type: String // Stores the paths like 'uploads/images/filename.jpg'
-  }],
+ 
   approved: {
     type: Boolean,
     default: false

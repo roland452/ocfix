@@ -59,7 +59,7 @@ route.get('/api/user/profile/:id', userAuth, async (req, res) => {
 
 
 // route for sending/unsending job offers with images and links
-route.post('/api/sendoffer', Upload.array('projects', 3), userAuth, async (req, res) => {
+route.post('/api/sendoffer', userAuth, async (req, res) => {
   const { jobOfferId, postedBy, portfolioLink } = req.body;
   const sentBy = req.user.userId;
 
@@ -87,14 +87,13 @@ route.post('/api/sendoffer', Upload.array('projects', 3), userAuth, async (req, 
 
     // 3. TOGGLE ON: Create new offer with images and portfolio link
     // Extract paths from the files uploaded by Multer
-    const projectPaths = req.files ? req.files.map(file => file.path.replace(/\\/g, '/')) : [];
+    //const projectPaths = req.files ? req.files.map(file => file.path.replace(/\\/g, '/')) : [];
 
     const newOffer = new Offers({
       jobOfferId,
       postedBy,
       sentBy,
       portfolioLink: portfolioLink || "",
-      projects: projectPaths
     });
 
     await newOffer.save();

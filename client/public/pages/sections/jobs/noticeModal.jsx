@@ -8,8 +8,6 @@ const NoticeModal = ({jobOfferId, postedBy, isUploadModalOpen, onUploadModalClos
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [portfolioLink, setPortfolioLink] = useState("");
-  const [images, setImages] = useState([]);
-  const [previews, setPreviews] = useState([]);
 
   async function sendOffer() {
     setIsSubmitting(true);
@@ -18,10 +16,7 @@ const NoticeModal = ({jobOfferId, postedBy, isUploadModalOpen, onUploadModalClos
     formData.append('postedBy', postedBy);
     formData.append('portfolioLink', portfolioLink);
     
-    // Append each image from the array to FormData
-    images.forEach((img) => {
-      formData.append('projects', img); 
-    });
+    
 
     try {
       await axios.post('/api/sendoffer', formData, { 
@@ -39,34 +34,12 @@ const NoticeModal = ({jobOfferId, postedBy, isUploadModalOpen, onUploadModalClos
   useEffect(() => {
     if (!isUploadModalOpen) {
       setPortfolioLink("");
-      setImages([]);
-      setPreviews([]);
+  
     }
   }, [isUploadModalOpen]);
 
-  const handleImageChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    
-    // FIX: Spread the previous state to append instead of replace
-    setImages((prevImages) => {
-      const combined = [...prevImages, ...selectedFiles].slice(0, 3);
-      
-      // Update previews based on the new combined array
-      const newPreviews = combined.map(file => URL.createObjectURL(file));
-      setPreviews(newPreviews);
-      
-      return combined;
-    });
-  };
 
-  const removeImage = (index) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
-    setPreviews((prev) => {
-      // Clean up memory by revoking the specific blob URL being removed
-      URL.revokeObjectURL(prev[index]);
-      return prev.filter((_, i) => i !== index);
-    });
-  };
+
 
   if (!isUploadModalOpen) return null;
 
@@ -94,35 +67,6 @@ const NoticeModal = ({jobOfferId, postedBy, isUploadModalOpen, onUploadModalClos
               value={portfolioLink} 
               onChange={(e) => setPortfolioLink(e.target.value)} 
             />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] flex items-center gap-2">
-              <FaImage className="text-[var(--active-color)]" /> Project Images ({images.length}/3)
-            </label>
-            
-            {/* Display images in a horizontal row */}
-            <div className="flex flex-row gap-3 overflow-x-auto pb-2 scrollbar-hide">
-              {previews.map((src, i) => (
-                <div key={i} className="relative h-20 w-20 flex-shrink-0 rounded-2xl bg-gray-100 dark:bg-zinc-800 overflow-hidden border border-gray-100 dark:border-zinc-800">
-                  <img src={src} className="w-full h-full object-cover" alt="preview" />
-                  {/* Small X button to remove image */}
-                  <button 
-                    onClick={() => removeImage(i)}
-                    className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 shadow-md hover:bg-red-600 transition-colors"
-                  >
-                    <HiX size={10} />
-                  </button>
-                </div>
-              ))}
-              
-              {images.length < 3 && (
-                <label className="h-20 w-20 flex-shrink-0 rounded-2xl border-2 border-dashed border-gray-200 dark:border-zinc-700 flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all">
-                  <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageChange} />
-                  <span className="text-gray-400 text-2xl font-light">+</span>
-                </label>
-              )}
-            </div>
           </div>
 
           <button 
