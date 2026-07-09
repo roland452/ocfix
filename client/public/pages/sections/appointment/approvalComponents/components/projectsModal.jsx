@@ -49,7 +49,7 @@ const ProjectsModal = ({ link, projects, isProjectModal, setIsProjectModal, sent
             {/* Portfolio Link */}
             {link && (
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase ml-1">Live Link</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase ml-1">Portfolio Link</label>
                 <a 
                   href={link} 
                   target="_blank" 
@@ -62,26 +62,6 @@ const ProjectsModal = ({ link, projects, isProjectModal, setIsProjectModal, sent
               </div>
             )}
 
-            {/* Images Grid */}
-            <div className="space-y-3">
-              <label className="text-[10px] font-bold text-gray-500 uppercase ml-1">Gallery</label>
-              <div className="grid grid-cols-2 gap-3">
-                {projects?.map((img, i) => (
-                  <motion.div 
-                    key={i}
-                    layoutId={`img-${i}`}
-                    onClick={() => setSelectedImg(img)}
-                    whileHover={{ scale: 1.02 }}
-                    className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-slate-400 dark:border-white/10 bg-white/5 group cursor-zoom-in"
-                  >
-                    <img src={img} alt="Project" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <FaSearchPlus className="text-white text-xl" />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </div>
 
           <div className="p-6 grid grid-cols-2 gap-2 bg-white/[0.02] border-t border-slate-200 dark:border-white/10">
