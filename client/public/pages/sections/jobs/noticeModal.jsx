@@ -11,17 +11,10 @@ const NoticeModal = ({jobOfferId, postedBy, isUploadModalOpen, onUploadModalClos
 
   async function sendOffer() {
     setIsSubmitting(true);
-    const formData = new FormData();
-    formData.append('jobOfferId', jobOfferId);
-    formData.append('postedBy', postedBy);
-    formData.append('portfolioLink', portfolioLink);
-    
-    
 
     try {
-      await axios.post('/api/sendoffer', formData, { 
+      await axios.post('/api/sendoffer', { jobOfferId, postedBy, portfolioLink }, { 
         withCredentials: true,
-        headers: { 'Content-Type': 'multipart/form-data' }
       });
       setIsSubmitting(false);
       onUploadModalClose();
