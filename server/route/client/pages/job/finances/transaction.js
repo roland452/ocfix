@@ -145,13 +145,11 @@ const handleUpload = (req, res, next) => {
 
 // 2. Updated Submission Route to include the Milestone Index
 route.post('/api/escrow/submit-work', userAuth, handleUpload, async (req, res) => {
-    console.log(contractId, notes, link, milestoneIndex)
     try {
         const { contractId, notes, link, milestoneIndex } = req.body;
         const contract = await EscrowContract.findById(contractId);
         
         const fileUrls = req.files ? req.files.map(file => file.path) : [];
-        console.log(fileUrls, 'file url')
 
         const newSubmission = {
             milestoneIndex: parseInt(milestoneIndex), // Judging this specific stage
