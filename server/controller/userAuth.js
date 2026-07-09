@@ -11,8 +11,6 @@ async function userAuth(req, res, next) {
 
         req.user = decoded
 
-        console.log(decoded,'decoded user');
-        
         next()
 
     } catch (error) {
