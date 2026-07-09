@@ -129,8 +129,22 @@ route.post('/api/fund-project', userAuth, async (req, res) => {
     }
 });
 
+
+
+const handleUpload = (req, res, next) => {
+    Upload.array('submissions', 10)(req, res, (err) => {
+        if(err) {
+            console.log(err.message, 'upload middleware error');
+            return res.status(400).json({success: false, message: `Upload failed: ${err.message}`})
+        }
+        next()
+    })
+}
+
+
+
 // 2. Updated Submission Route to include the Milestone Index
-route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10), async (req, res) => {
+route.post('/api/escrow/submit-work', userAuth, handleUpload, async (req, res) => {
     console.log(contractId, notes, link, milestoneIndex)
     try {
         const { contractId, notes, link, milestoneIndex } = req.body;

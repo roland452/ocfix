@@ -74,7 +74,10 @@ const ReviewProject = ({ contract, userType, onClose }) => {
             setSelectedFiles([]);
             await fetchWorkProgress();
             setToast("Stage work submitted successfully!", "success");
-        } catch (err) { setToast("Submission failed", "error"); } 
+        } catch (err) {
+            const msg = err?.response?.data?.message || "Submission failed";
+            setToast(msg, "error");
+        }
         finally { setLoading(false); }
     };
 
@@ -92,7 +95,10 @@ const ReviewProject = ({ contract, userType, onClose }) => {
             setSelectedFiles([]);
             fetchWorkProgress();
             setToast("Submission updated successfully!", "success");
-        } catch (err) { setToast("Update failed", "error"); }
+        } catch (err) {
+            const msg = err?.response?.data?.message || "Update failed";
+            setToast(msg, "error");
+        }
         finally { setLoading(false); }
     };
 
