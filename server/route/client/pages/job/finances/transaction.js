@@ -135,14 +135,7 @@ route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10),
         const { contractId, notes, link, milestoneIndex } = req.body;
         const contract = await EscrowContract.findById(contractId);
         
-        const fileUrls = [];
-        if (req.files) {
-            const uploadPromises = req.files.map(file => 
-                cloudinary.uploader.upload(file.path, { folder: "octfix/submissions" })
-            );
-            const results = await Promise.all(uploadPromises);
-            results.forEach(r => fileUrls.push(r.secure_url));
-        }
+        const fileUrls = req.files ? req.files.map(file => file.path) : [];
 
         const newSubmission = {
             milestoneIndex: parseInt(milestoneIndex), // Judging this specific stage
@@ -161,8 +154,9 @@ route.post('/api/escrow/submit-work', userAuth, Upload.array('submissions', 10),
 
         res.status(200).json({ success: true, message: "Stage work submitted" });
     } catch (error) {
-        res.status(500).json({ success: false, message: "Submission failed", error });
         console.log(error)
+        res.status(500).json({ success: false, message: "Submission failed", error });
+        
     }
 });
 
