@@ -3,6 +3,7 @@ import { BsFillXCircleFill } from "react-icons/bs";
 import NavButton from './navButton';
 import useNavActive from '../../context/navContext';
 import ModeButton from './mode_button';
+import OctfixLogo from '../../../src/assets/octfix-logo-v2.svg'
 
 
 const Menu = () => {
@@ -34,9 +35,10 @@ const Menu = () => {
       </button>
 
 
-      <header className='flex place-content-center pt-[1rem] pl-[1rem] '>
+      {/* <header className='flex place-content-center pt-[1rem] pl-[1rem] '>
         <h1 className='text-[30px] text-white md:text-4xl font-bold'>octfix</h1>
-      </header>
+      </header> */}
+      <img src={OctfixLogo} alt="octfix" />
 
       <NavButton />
 
