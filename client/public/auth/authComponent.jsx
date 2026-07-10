@@ -5,6 +5,9 @@ import { FcOpenedFolder } from "react-icons/fc";
 import { FaHome } from "react-icons/fa";
 import { MdSecurity } from "react-icons/md";
 
+import OctfixLogo from '../../src/assets/octfix-logo-v2.svg'
+import OctfixIcon from '../../src/assets/octfix-icon-v2.svg'
+
 import InputComponent from "./inputComponent";
 import AuthButtons from "./buttons/authButtons";
 import useLoginContext from "./components/login/context";
@@ -30,7 +33,7 @@ const AuthComponent = () => {
         {/* Home Navigation - Subtle in light mode, glowing in dark */}
         <Link 
           to={'/dashboard'} 
-          className="absolute top-10 right-6 p-3 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-sm text-lg hover:scale-110 transition-all z-50 text-gray-600 dark:text-white"
+          className="absolute top-15 right-6 p-3 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-sm text-lg hover:scale-110 transition-all z-50 text-gray-600 dark:text-white"
         > 
           <FaHome /> 
         </Link>
@@ -40,7 +43,7 @@ const AuthComponent = () => {
           loginActiveSection !== 'email' && authSection === 'login' && (
             <div 
               onClick={() => setLoginActiveSection('email')}
-              className="absolute top-10  p-3 rounded-2xl bg-[var(--active-color)]/10 text-[var(--active-color)] cursor-pointer hover:bg-[var(--active-color)]/20 transition-colors"
+              className="absolute top-15  p-3 rounded-2xl bg-[var(--active-color)]/10 text-[var(--active-color)] cursor-pointer hover:bg-[var(--active-color)]/20 transition-colors"
               title="Login with Face ID"
             >
               <TbFaceId className="text-xl" />
@@ -49,12 +52,13 @@ const AuthComponent = () => {
         }
 
         {/* Brand Header - Reduced margins to prevent scroll */}
-        <div className='flex flex-col items-center gap-1 mb-6 mt-2'>
+        <div className='flex flex-col items-center gap-1 mb-3 mt-8'>
             <h1 className='text-2xl font-black tracking-tighter text-gray-900 dark:text-white uppercase'>
-              Octfix
+               <img src={OctfixLogo} alt="octfix" width={110} className='flex justify-self-center' /> 
             </h1>
-            <p className='text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em]'>
-              Service Marketplace
+            <p className='text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em] flex items-center gap-1'>
+               <img src={OctfixIcon} alt="octfix" width={20} className='flex justify-self-center' /> 
+               Service Marketplace
             </p>
         </div>
 
