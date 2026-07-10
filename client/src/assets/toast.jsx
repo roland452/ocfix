@@ -61,7 +61,7 @@ const Toast = () => {
                         <span className="text-[10px] font-black uppercase tracking-widest opacity-40 text-zinc-800 dark:text-zinc-100">
                             {toastValue.status || 'Notification'}
                         </span>
-                        <p className="text-sm font-bold text-zinc-800 dark:text-zinc-100">
+                        <p className="text-sm font-bold text-zinc-800 dark:text-zinc-100 capitalize">
                             {toastValue.message}
                         </p>
                     </div>
