@@ -170,7 +170,7 @@ const ChatDisplay = ({ setReplyingTo, deleteMessage, handleSend, activeChatId })
   const userType   = activeChat?.userType;
 
   return (
-    <div className="flex flex-col gap-4 p-2">
+    <div className="flex flex-col gap-4 md:p-2">
       <EmptyChat />
 
       {currentMessages.map((msg, i) => {
