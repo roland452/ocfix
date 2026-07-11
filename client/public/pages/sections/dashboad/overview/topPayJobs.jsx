@@ -73,7 +73,7 @@ const TopPayJobs = () => {
                 // Show job title and amount in tooltip
                 formatter={(value, name, props) => [
                   `₦${value.toLocaleString()}`,
-                  props.payload.title || 'Job'
+                  props.payload.category || 'Job'
                 ]}
                 labelFormatter={(label) => `Rank #${label}`}
               />
